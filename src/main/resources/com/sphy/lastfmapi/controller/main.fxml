@@ -19,6 +19,7 @@
 
 
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
 <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <VBox>
@@ -64,35 +65,22 @@
         <AnchorPane>
           <children>
             <TabPane fx:id="tpEditImage" layoutX="6.0" layoutY="41.0" prefHeight="504.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" />
-            <HBox alignment="CENTER_LEFT" spacing="5.0">
-              <children>
-                <Label text="Buscar: "/>
-                <TextField id="searchField" promptText="Introduce artista a buscar"/>
-                <Button text="BUSCAR" />
-              </children>
-              <padding>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-              </padding>
-            </HBox>
+            <VBox alignment="CENTER" spacing="10">
+              <HBox alignment="CENTER_LEFT" spacing="5.0">
+                <children>
+                  <Label text="Buscar: "/>
+                  <TextField fx:id="searchField" promptText="Introduce artista a buscar"/>
+                  <Button text="BUSCAR" onAction="#searchArtist" />
+                </children>
+                <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </padding>
+              </HBox>
+              <ListView fx:id="tagsListView" prefHeight="200.0" prefWidth="200.0" />
+            </VBox>
           </children>
         </AnchorPane>
-        <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
-          <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
-              <font>
-                <Font size="11.0" fx:id="x3" />
-              </font>
-              <textFill>
-                <Color red="0.625" green="0.625" blue="0.625" fx:id="x4" />
-              </textFill>
-            </Label>
-            <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-            <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
-          </children>
-          <padding>
-            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-          </padding>
-        </HBox>
+
       </children>
     </VBox>
   </children>
