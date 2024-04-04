@@ -1,5 +1,7 @@
 package com.sphy.lastfmapi.controller;
 
+import com.sphy.lastfmapi.model.Tag;
+import com.sphy.lastfmapi.model.Tags;
 import com.sphy.lastfmapi.service.LastFMService;
 import com.sphy.lastfmapi.tasks.SearchArtistTask;
 import io.reactivex.Observable;
@@ -21,7 +23,7 @@ public class MainController implements Initializable {
 
     private SearchArtistTask searchArtistTask;
     private ObservableList<String> tags;
-    LastFMService lastFMService;
+
     @FXML
     private TextField searchField;
     @FXML
@@ -42,10 +44,9 @@ public class MainController implements Initializable {
         searchField.clear();
         searchField.requestFocus();
         this.tagsListView.setItems(this.tags);
-
-        searchArtistTask = new SearchArtistTask(artistName, this.tags);
         // impresiones para depurar
-        System.out.println("hello");
+        System.out.println("ejecuta SearchArtistTask.");
+        searchArtistTask = new SearchArtistTask(artistName, this.tags);
         new Thread(searchArtistTask).start();
     }
     @FXML

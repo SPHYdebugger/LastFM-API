@@ -1,6 +1,7 @@
 package com.sphy.lastfmapi.model;
 
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tag {
+public class Tags {
 
-    private String name;
-    private String url;
+    List<Tag> tag;
+
 
 }
