@@ -14,7 +14,10 @@ public class HelloApplication extends Application {
 
     @Override
     public void init() throws Exception {
+
+        // impresión para depurar
         System.out.println("Initializing Application");
+
         super.init();
     }
 
@@ -41,6 +44,7 @@ public class HelloApplication extends Application {
     public void stop() throws Exception {
         System.out.println("Application finished");
         super.stop();
+        System.exit(0);
     }
 
     public static void main(String[] args) {
