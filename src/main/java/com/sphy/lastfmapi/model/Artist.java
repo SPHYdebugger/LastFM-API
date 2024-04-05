@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 @Data
@@ -15,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 
 
-public class ArtistInformation {
+public class Artist {
 
 
     String name;
@@ -31,8 +29,5 @@ public class ArtistInformation {
     Bio bio;
 
 
-    public ArtistInformation(String name, Tags tags) {
-        this.name = name;
-        this.tags = tags;
-    }
+
 }

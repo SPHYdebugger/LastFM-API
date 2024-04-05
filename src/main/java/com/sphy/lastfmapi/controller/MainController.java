@@ -1,10 +1,6 @@
 package com.sphy.lastfmapi.controller;
 
-import com.sphy.lastfmapi.model.Tag;
-import com.sphy.lastfmapi.model.Tags;
-import com.sphy.lastfmapi.service.LastFMService;
 import com.sphy.lastfmapi.tasks.SearchArtistTask;
-import io.reactivex.Observable;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +18,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     private SearchArtistTask searchArtistTask;
-    private ObservableList<String> tags;
+    private ObservableList<String> listNames;
 
     @FXML
     private TextField searchField;
@@ -39,19 +35,23 @@ public class MainController implements Initializable {
 
     @FXML
     public void searchArtist(ActionEvent event) {
-        this.tags = FXCollections.observableArrayList();
+        this.listNames = FXCollections.observableArrayList();
         String artistName = searchField.getText();
         searchField.clear();
         searchField.requestFocus();
-        this.tagsListView.setItems(this.tags);
+        this.tagsListView.setItems(this.listNames);
+
         // impresiones para depurar
         System.out.println("ejecuta SearchArtistTask.");
-        searchArtistTask = new SearchArtistTask(artistName, this.tags);
+
+        searchArtistTask = new SearchArtistTask(artistName, this.listNames);
         new Thread(searchArtistTask).start();
     }
     @FXML
     public void exitApplication (ActionEvent event){
+
         Platform.exit();
+
     }
 
 }
