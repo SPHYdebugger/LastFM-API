@@ -16,11 +16,14 @@ module com.sphy.lastfmapi {
 
     opens com.sphy.lastfmapi.controller;
     opens com.sphy.lastfmapi to javafx.fxml;
-    opens com.sphy.lastfmapi.model;
+    opens com.sphy.lastfmapi.model.getArtist;
+    opens com.sphy.lastfmapi.model.getAlbums;
+
 
 
 
     exports com.sphy.lastfmapi;
+
 
 
 }
