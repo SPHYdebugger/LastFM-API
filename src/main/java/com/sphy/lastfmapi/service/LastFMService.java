@@ -2,16 +2,14 @@ package com.sphy.lastfmapi.service;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.sphy.lastfmapi.model.Tag;
+import com.sphy.lastfmapi.model.getAlbums.Album;
+import com.sphy.lastfmapi.model.getArtist.Tag;
 import com.sphy.lastfmapi.util.Constants;
 import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class LastFMService {
@@ -56,24 +54,26 @@ public class LastFMService {
                 .map(ArtistInformation::getTags)
                 .flatMapIterable(Tags::getTag);*/
 
-        return this.artistAPI.getInformation(artistName, Constants.API_KEY, "json")
+        return this.artistAPI.getArtistInformation(artistName, Constants.API_KEY, "json")
                 .map(information -> information.getArtist())
                 .map(artist -> artist.getTags())
                 .map(tags -> tags.getTag())
                 .flatMapIterable(tag -> tag);
     }
 
-    /*public Observable<Tag> getTags(String artist) {
-        return this.artistAPI.getInformation(artist, Constants.API_KEY, "json")
-                .map(ArtistInformation::getTags)
-                .flatMap(tagsWrapper -> {
-                    List<Tag> tagsList = tagsWrapper != null ? tagsWrapper.getTag() : new ArrayList<>();
-                    if (!tagsList.isEmpty()) {
-                        return Observable.just(tagsList.get(0));
-                    } else {
-                        return Observable.empty();
-                    }
-                });
-    }*/
+    public Observable<Album> getAlbumsInformation(String artistName) {
+
+        // impresión para depurar
+        System.out.println("getAlbumsName iniciado");
+        System.out.println("Artista buscado: "+ artistName);
+
+        return this.artistAPI.getAlbumsInformation(artistName, Constants.API_KEY, "json")
+                .map(informationAlbums -> informationAlbums.getTopalbums())
+                .map(topAlbums -> topAlbums.getAlbum())
+                .flatMapIterable(album -> album);
+
+    }
+
+
 
 }

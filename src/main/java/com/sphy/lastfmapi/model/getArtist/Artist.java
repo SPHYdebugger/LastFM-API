@@ -1,4 +1,4 @@
-package com.sphy.lastfmapi.model;
+package com.sphy.lastfmapi.model.getArtist;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

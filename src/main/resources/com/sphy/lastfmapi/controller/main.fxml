@@ -77,6 +77,7 @@
                 </padding>
               </HBox>
               <ListView fx:id="tagsListView" prefHeight="200.0" prefWidth="200.0" />
+              <ListView fx:id="albumsListView" prefHeight="200.0" prefWidth="200.0" />
             </VBox>
           </children>
         </AnchorPane>

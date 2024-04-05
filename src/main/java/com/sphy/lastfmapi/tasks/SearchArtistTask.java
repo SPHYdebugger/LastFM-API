@@ -1,6 +1,7 @@
 package com.sphy.lastfmapi.tasks;
 
-import com.sphy.lastfmapi.model.Tag;
+import com.sphy.lastfmapi.model.getAlbums.Album;
+import com.sphy.lastfmapi.model.getArtist.Tag;
 import com.sphy.lastfmapi.service.LastFMService;
 import io.reactivex.functions.Consumer;
 import javafx.application.Platform;
@@ -10,11 +11,13 @@ import javafx.concurrent.Task;
 public class SearchArtistTask extends Task<Integer> {
 
     private String artistName;
-    private ObservableList<String > listNames;
+    private ObservableList<String> listTagNames;
+    private ObservableList<String> listAlbumsNames;
 
-    public SearchArtistTask(String artistName, ObservableList<String> listNames){
+    public SearchArtistTask(String artistName, ObservableList<String> listNames, ObservableList<String> listAlbumsNames){
         this.artistName = artistName;
-        this.listNames = listNames;
+        this.listTagNames = listNames;
+        this.listAlbumsNames = listAlbumsNames;
     }
 
     @Override
@@ -27,9 +30,15 @@ public class SearchArtistTask extends Task<Integer> {
 
         Consumer<Tag> user = (tag) -> {
             Thread.sleep(400);
-            Platform.runLater(() ->this.listNames.add(tag.getName()));
+            Platform.runLater(() ->this.listTagNames.add(tag.getName()));
+        };
+        Consumer<Album> user2 = (album) -> {
+            Thread.sleep(400);
+            Platform.runLater(() ->this.listAlbumsNames.add(album.getName()));
         };
         lastFMService.getTags(artistName).subscribe(user);
+        lastFMService.getAlbumsInformation(artistName).subscribe(user2);
+
         return null;
     }
 

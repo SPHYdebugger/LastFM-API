@@ -1,6 +1,4 @@
-package com.sphy.lastfmapi.model;
-
-import java.util.List;
+package com.sphy.lastfmapi.model.getArtist;
 
 
 import lombok.AllArgsConstructor;
@@ -10,8 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Similar {
+public class Stats {
 
-    List<Artist> artist;
+    int listeners;
+    int playcount;
 
 }
