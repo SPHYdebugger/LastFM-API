@@ -64,7 +64,7 @@
 
         <AnchorPane>
           <children>
-            <TabPane fx:id="tpEditImage" layoutX="6.0" layoutY="41.0" prefHeight="504.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" />
+            <TabPane fx:id="search" layoutX="6.0" layoutY="41.0" prefHeight="504.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" />
             <VBox alignment="CENTER" spacing="10">
               <HBox alignment="CENTER_LEFT" spacing="5.0">
                 <children>
@@ -76,8 +76,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                 </padding>
               </HBox>
-              <ListView fx:id="tagsListView" prefHeight="200.0" prefWidth="200.0" />
-              <ListView fx:id="albumsListView" prefHeight="200.0" prefWidth="200.0" />
+
             </VBox>
           </children>
         </AnchorPane>

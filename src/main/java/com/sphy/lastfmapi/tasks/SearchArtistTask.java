@@ -13,6 +13,7 @@ public class SearchArtistTask extends Task<Integer> {
     private String artistName;
     private ObservableList<String> listTagNames;
     private ObservableList<String> listAlbumsNames;
+    int progress = 0;
 
     public SearchArtistTask(String artistName, ObservableList<String> listNames, ObservableList<String> listAlbumsNames){
         this.artistName = artistName;
@@ -35,9 +36,15 @@ public class SearchArtistTask extends Task<Integer> {
         Consumer<Album> user2 = (album) -> {
             Thread.sleep(400);
             Platform.runLater(() ->this.listAlbumsNames.add(album.getName()));
+            progress++;
+            updateProgress(progress + 1, 60);
+
         };
+
         lastFMService.getTags(artistName).subscribe(user);
         lastFMService.getAlbumsInformation(artistName).subscribe(user2);
+        updateProgress(100, 60);
+
 
         return null;
     }
