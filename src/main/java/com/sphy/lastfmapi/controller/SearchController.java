@@ -6,13 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class SearchController implements Initializable {
 
@@ -31,6 +29,11 @@ public class SearchController implements Initializable {
     private ProgressBar progress;
     @FXML
     private Label status;
+    @FXML
+    private CheckBox filterCheckBox;
+
+    @FXML
+    private TextField filterTextField;
 
     public SearchController(String artistName) {
         this.artistName = artistName;
@@ -43,6 +46,11 @@ public class SearchController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        filterTextField.disableProperty().bind(filterCheckBox.selectedProperty().not());
+        filterTextField.textProperty().addListener((observable, oldValue, newValue) -> filterAlbums(newValue));
+
         this.listNames = FXCollections.observableArrayList();
         this.listAlbumsNames = FXCollections.observableArrayList();
 
@@ -60,6 +68,15 @@ public class SearchController implements Initializable {
         new Thread(searchArtistTask).start();
     }
 
-
+    private void filterAlbums(String filterText) {
+        if (filterText == null || filterText.isEmpty()) {
+            albumsListView.setItems(listAlbumsNames);
+        } else {
+            ObservableList<String> filteredAlbums = listAlbumsNames.stream()
+                    .filter(album -> album.toLowerCase().contains(filterText.toLowerCase()))
+                    .collect(Collectors.toCollection(FXCollections::observableArrayList));
+            albumsListView.setItems(filteredAlbums);
+        }
+    }
 
 }

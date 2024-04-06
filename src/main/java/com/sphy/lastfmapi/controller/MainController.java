@@ -39,6 +39,7 @@ public class MainController implements Initializable {
         Tab newTab = new Tab();
         newTab.setText(artistName);
 
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("search.fxml"));
         SearchController searchController = new SearchController(artistName);
         searchController.setTabPane(search);

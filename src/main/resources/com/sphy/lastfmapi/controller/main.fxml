@@ -64,7 +64,7 @@
 
         <AnchorPane>
           <children>
-            <TabPane fx:id="search" layoutX="6.0" layoutY="41.0" prefHeight="504.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" />
+            <TabPane fx:id="search" layoutX="6.0" layoutY="41.0" prefHeight="504.0" prefWidth="1000.0" tabClosingPolicy="ALL_TABS" />
             <VBox alignment="CENTER" spacing="10">
               <HBox alignment="CENTER_LEFT" spacing="5.0">
                 <children>

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import com.sphy.lastfmapi.controller.SearchController?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefHeight="400.0" prefWidth="600.0">
     <children>
         <VBox alignment="CENTER" spacing="10">
-            <ProgressBar fx:id="progress" layoutX="101.0" layoutY="84.0" prefHeight="18.0" prefWidth="505.0" progress="0.0" />
+            <ProgressBar fx:id="progress" layoutX="101.0" layoutY="84.0" prefHeight="18.0" prefWidth="300.0" progress="0.0" />
 
             <ListView fx:id="tagsListView" prefHeight="200.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" spacing="5">
+                <CheckBox fx:id="filterCheckBox" text="Filtrar" />
+                <TextField fx:id="filterTextField" promptText="Texto de filtrado" />
+            </HBox>
             <ListView fx:id="albumsListView" prefHeight="200.0" prefWidth="200.0" />
         </VBox>
     </children>
 </AnchorPane>
+
