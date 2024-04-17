@@ -40,7 +40,7 @@ public class ArtistImageDownloader {
 
 
 
-            // Verifica si la URL es válida antes de devolverla
+            /*// Verifica si la URL es válida antes de devolverla
             if (imageUrl == null || imageUrl.isEmpty()) {
 
                 throw new IllegalArgumentException("URL inválida o recurso no encontrado");
@@ -48,7 +48,7 @@ public class ArtistImageDownloader {
             }else {
                 imageUrl = parseArtistImage(response.toString());
                 System.out.println("la url de la imagen es: " + imageUrl);
-            }
+            }*/
         } catch (IllegalArgumentException | IOException e) {
             return "fallo";
         }
