@@ -38,9 +38,7 @@ public class ArtistImageDownloader {
 
             System.out.println("response. " + response);
 
-            // Parsea la respuesta JSON
-            imageUrl = parseArtistImage(response.toString());
-            System.out.println("la url de la imagen es: " + imageUrl);
+
 
             // Verifica si la URL es válida antes de devolverla
             if (imageUrl == null || imageUrl.isEmpty()) {
@@ -52,7 +50,6 @@ public class ArtistImageDownloader {
                 System.out.println("la url de la imagen es: " + imageUrl);
             }
         } catch (IllegalArgumentException | IOException e) {
-            e.printStackTrace();
             return "fallo";
         }
 
