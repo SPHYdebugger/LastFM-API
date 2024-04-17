@@ -1,12 +1,14 @@
 package com.sphy.lastfmapi.controller;
 
+import com.sphy.lastfmapi.model.getImage.ArtistImageDownloader;
 import com.sphy.lastfmapi.tasks.SearchArtistTask;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,9 +20,12 @@ public class SearchController implements Initializable {
 
     private TabPane tabPane;
 
+
     private SearchArtistTask searchArtistTask;
     private ObservableList<String> listNames;
     private ObservableList<String> listAlbumsNames;
+
+
     @FXML
     private ListView<String> tagsListView;
     @FXML
@@ -31,7 +36,8 @@ public class SearchController implements Initializable {
     private Label status;
     @FXML
     private CheckBox filterCheckBox;
-
+    @FXML
+    private ImageView artistImageView;
     @FXML
     private TextField filterTextField;
 
@@ -66,6 +72,19 @@ public class SearchController implements Initializable {
         progress.progressProperty().bind(searchArtistTask.progressProperty());
 
         new Thread(searchArtistTask).start();
+
+        /*String imageString = ArtistImageDownloader.getArtistImage(artistName);
+
+        if (!imageString.equals("fallo")) {
+            Image image = new Image(imageString);
+            this.artistImageView.setImage(image);
+        } else {
+            // Mostrar una imagen predeterminada en caso de que no se encuentre ninguna imagen
+            Image defaultImage = new Image("com/sphy/lastfmapi/images/no-disponible.jpg");
+            this.artistImageView.setImage(defaultImage);
+        }*/
+
+
     }
 
     private void filterAlbums(String filterText) {
@@ -78,5 +97,7 @@ public class SearchController implements Initializable {
             albumsListView.setItems(filteredAlbums);
         }
     }
+
+
 
 }

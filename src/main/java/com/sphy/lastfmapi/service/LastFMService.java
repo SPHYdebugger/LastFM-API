@@ -50,9 +50,7 @@ public class LastFMService {
         System.out.println("getTags iniciado");
         System.out.println("Artista buscado: "+ artistName);
 
-       /* return this.artistAPI.getInformation(artist, Constants.API_KEY, "json")
-                .map(ArtistInformation::getTags)
-                .flatMapIterable(Tags::getTag);*/
+
 
         return this.artistAPI.getArtistInformation(artistName, Constants.API_KEY, "json")
                 .map(information -> information.getArtist())
@@ -73,6 +71,8 @@ public class LastFMService {
                 .flatMapIterable(album -> album);
 
     }
+
+
 
 
 

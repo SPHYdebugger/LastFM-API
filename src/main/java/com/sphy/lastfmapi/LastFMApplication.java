@@ -8,9 +8,9 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
-public class HelloApplication extends Application {
+public class LastFMApplication extends Application {
 
-
+//TODO hacer la exportación con CSV o añadir foto (aunque sea desde otra API)
 
     @Override
     public void init() throws Exception {
