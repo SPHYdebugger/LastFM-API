@@ -1,6 +1,6 @@
 package com.sphy.lastfmapi.controller;
 
-import com.sphy.lastfmapi.model.getImage.ArtistImageDownloader;
+
 import com.sphy.lastfmapi.tasks.SearchArtistTask;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -73,16 +73,7 @@ public class SearchController implements Initializable {
 
         new Thread(searchArtistTask).start();
 
-        /*String imageString = ArtistImageDownloader.getArtistImage(artistName);
 
-        if (!imageString.equals("fallo")) {
-            Image image = new Image(imageString);
-            this.artistImageView.setImage(image);
-        } else {
-            // Mostrar una imagen predeterminada en caso de que no se encuentre ninguna imagen
-            Image defaultImage = new Image("com/sphy/lastfmapi/images/no-disponible.jpg");
-            this.artistImageView.setImage(defaultImage);
-        }*/
 
 
     }
