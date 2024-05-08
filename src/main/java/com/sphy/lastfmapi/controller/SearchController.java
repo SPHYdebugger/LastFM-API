@@ -100,6 +100,7 @@ public class SearchController implements Initializable {
         progress.progressProperty().bind(searchArtistTask.progressProperty());
         //Lanzar el hilo con la tarea
         new Thread(searchArtistTask).start();
+
     }
 
     private void filterAlbums(String filterText) {
