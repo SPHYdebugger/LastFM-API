@@ -6,15 +6,19 @@ import com.sphy.lastfmapi.model.getAlbums.Album;
 import com.sphy.lastfmapi.model.getArtist.Tag;
 import com.sphy.lastfmapi.util.Constants;
 import io.reactivex.Observable;
+import javafx.scene.image.Image;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
+import java.util.Optional;
+
 public class LastFMService {
 
     private ArtistAPI artistAPI;
+    Image artistImage;
 
     public LastFMService() {
         try {
@@ -44,13 +48,12 @@ public class LastFMService {
     }
 
 
+    //Observable de objetos Tag
     public Observable<Tag> getTags(String artistName) {
 
         // impresión para depurar
         System.out.println("getTags iniciado");
         System.out.println("Artista buscado: "+ artistName);
-
-
 
         return this.artistAPI.getArtistInformation(artistName, Constants.API_KEY, "json")
                 .map(information -> information.getArtist())
@@ -59,6 +62,23 @@ public class LastFMService {
                 .flatMapIterable(tag -> tag);
     }
 
+    //Observable de objetos Image
+    public Observable<com.sphy.lastfmapi.model.getArtist.Image> getImageUrl(String artistName) {
+
+        // impresión para depurar
+        System.out.println("getImage iniciado");
+        System.out.println("Artista buscado: " + artistName);
+
+        return this.artistAPI.getArtistInformation(artistName, Constants.API_KEY, "json")
+                .map(information -> information.getArtist())
+                .map(artist -> artist.getImage())
+                .flatMapIterable(image -> image);
+
+
+    }
+
+
+    //Observabeld de objetos Album
     public Observable<Album> getAlbumsInformation(String artistName) {
 
         // impresión para depurar
@@ -71,9 +91,5 @@ public class LastFMService {
                 .flatMapIterable(album -> album);
 
     }
-
-
-
-
 
 }

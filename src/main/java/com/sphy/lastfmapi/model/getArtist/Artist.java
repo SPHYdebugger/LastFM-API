@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 @Data
@@ -19,9 +21,7 @@ public class Artist {
     String name;
     String mbid;
     String url;
-    String image_size_small;
-    String image_size_medium;
-    String image_size_large;
+    List<Image> image;
     int streamable;
     Stats stats;
     Similar similar;
