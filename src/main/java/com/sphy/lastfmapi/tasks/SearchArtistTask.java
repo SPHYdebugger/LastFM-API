@@ -4,7 +4,6 @@ import com.sphy.lastfmapi.model.getAlbums.Album;
 import com.sphy.lastfmapi.model.getArtist.Image;
 import com.sphy.lastfmapi.model.getArtist.Tag;
 import com.sphy.lastfmapi.service.LastFMService;
-import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
