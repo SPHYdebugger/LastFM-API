@@ -1,8 +1,10 @@
 package com.sphy.lastfmapi.tasks;
 
 import com.sphy.lastfmapi.model.getAlbums.Album;
+import com.sphy.lastfmapi.model.getArtist.Image;
 import com.sphy.lastfmapi.model.getArtist.Tag;
 import com.sphy.lastfmapi.service.LastFMService;
+import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -13,15 +15,20 @@ public class SearchArtistTask extends Task<Integer> {
     private String artistName;
     private ObservableList<String> listTagNames;
     private ObservableList<String> listAlbumsNames;
+    private ObservableList<Image> artistImageUrl;
+
+
+
 
 
     int progress = 0;
 
 
-    public SearchArtistTask(String artistName, ObservableList<String> listNames, ObservableList<String> listAlbumsNames){
+    public SearchArtistTask(String artistName, ObservableList<String> listNames, ObservableList<String> listAlbumsNames, ObservableList<Image> artistImageUrl){
         this.artistName = artistName;
         this.listTagNames = listNames;
         this.listAlbumsNames = listAlbumsNames;
+        this.artistImageUrl = artistImageUrl;
     }
 
     @Override
@@ -44,10 +51,26 @@ public class SearchArtistTask extends Task<Integer> {
 
         };
 
+        Consumer<Image> user3 = imageUrl -> {
+
+                Platform.runLater(() -> {
+
+                    this.artistImageUrl.add(imageUrl);
+                    System.out.println(imageUrl);
+                });
+
+        };
+
+        lastFMService.getImageUrl(artistName).subscribe(user3);
         lastFMService.getTags(artistName).subscribe(user);
         lastFMService.getAlbumsInformation(artistName).subscribe(user2);
 
+
         updateProgress(100, 60);
+
+
+
+
 
 
         return null;
