@@ -1,7 +1,5 @@
 package com.sphy.lastfmapi.model.getAlbums;
 
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

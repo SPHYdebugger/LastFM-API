@@ -1,10 +1,7 @@
 package com.sphy.lastfmapi.controller;
 
 
-import com.sphy.lastfmapi.service.LastFMService;
 import com.sphy.lastfmapi.tasks.SearchArtistTask;
-import io.reactivex.functions.Consumer;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,9 +20,7 @@ import java.util.stream.Collectors;
 public class SearchController implements Initializable {
 
     String artistName;
-
     private TabPane tabPane;
-
 
     private SearchArtistTask searchArtistTask;
     private ObservableList<String> listNames;
@@ -49,22 +44,17 @@ public class SearchController implements Initializable {
     private ImageView artistImageView;
     @FXML
     private TextField filterTextField;
-
     @FXML
     private ImageView background;
-
     @FXML
     private TableView<com.sphy.lastfmapi.model.getArtist.Image> artistImageTable;
     @FXML
     private TableColumn<com.sphy.lastfmapi.model.getArtist.Image, String> sizeColumn;
     @FXML
     private TableColumn<com.sphy.lastfmapi.model.getArtist.Image, ImageView> pngColumn;
-
-
     public SearchController(String artistName) {
         this.artistName = artistName;
     }
-
     public void setTabPane(TabPane tabPane) {
         this.tabPane = tabPane;
     }
@@ -73,61 +63,47 @@ public class SearchController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //artistImage = new Image("C:\\Users\\sanph\\LastfmApi\\src\\main\\resources\\com\\sphy\\lastfmapi\\image\\no-disponible.jpg");
-
+        //listener sobre el checkbox Filter
         filterTextField.disableProperty().bind(filterCheckBox.selectedProperty().not());
         filterTextField.textProperty().addListener((observable, oldValue, newValue) -> filterAlbums(newValue));
 
+        //Listas de observables
         this.listNames = FXCollections.observableArrayList();
         this.listAlbumsNames = FXCollections.observableArrayList();
         this.listImageUrl = FXCollections.observableArrayList();
 
-        System.out.println();
-
+        //añadir la lista de nombres de tags al listView
         this.tagsListView.setItems(this.listNames);
+        //añadir la lista de albumes al listView
         this.albumsListView.setItems(this.listAlbumsNames);
-        //artistImageView.setImage(artistImage);
 
-        //añadimos la lista al tableView
+        //añadir la lista al tableView
         artistImageTable.setItems(listImageUrl);
 
         //añadir valores a las columnas del tableView
         sizeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSize()));
-
-        //añadimos la imagen a la columna del blasón
         pngColumn.setCellValueFactory(param -> {
             ImageView imageView = new ImageView();
-            imageView.setFitHeight(50); // Establecer el alto de la imagen
-            imageView.setFitWidth(50); // Establecer el ancho de la imagen
+            imageView.setFitHeight(55);
+            imageView.setFitWidth(55);
             com.sphy.lastfmapi.model.getArtist.Image imageObject = param.getValue();
             Image image = new Image(imageObject.getText(), true);
             imageView.setImage(image);
             return new javafx.beans.property.SimpleObjectProperty<>(imageView);
         });
 
+        //Crear la tarea
         searchArtistTask = new SearchArtistTask(artistName, this.listNames, this.listAlbumsNames, this.listImageUrl);
 
         // Mostrar la barra de estado y la barra de progreso
-
         progress.setVisible(true);
-
         progress.progressProperty().bind(searchArtistTask.progressProperty());
-
-        /*searchArtistTask.setOnSucceeded(event -> {
-
-            String urlImage = listImageUrl.get(0);
-            Image image = new Image(urlImage);
-            artistImageView.setImage(image);
-        });*/
-
+        //Lanzar el hilo con la tarea
         new Thread(searchArtistTask).start();
-
-
-
-
     }
 
     private void filterAlbums(String filterText) {
+        //Filtrar la lista de albumes mediante un stream
         if (filterText == null || filterText.isEmpty()) {
             albumsListView.setItems(listAlbumsNames);
         } else {

@@ -1,15 +1,11 @@
 package com.sphy.lastfmapi.controller;
 
-import com.sphy.lastfmapi.tasks.SearchArtistTask;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,10 +32,11 @@ public class MainController implements Initializable {
         searchField.clear();
         searchField.requestFocus();
 
+        // crear nueva pestaña
         Tab newTab = new Tab();
         newTab.setText(artistName);
 
-
+        //cargar la pestaña y su controlador
         FXMLLoader loader = new FXMLLoader(getClass().getResource("search.fxml"));
         SearchController searchController = new SearchController(artistName);
         searchController.setTabPane(search);

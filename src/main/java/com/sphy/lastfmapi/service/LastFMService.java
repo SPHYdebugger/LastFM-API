@@ -48,6 +48,7 @@ public class LastFMService {
     }
 
 
+    //Observable de objetos Tag
     public Observable<Tag> getTags(String artistName) {
 
         // impresión para depurar
@@ -61,9 +62,10 @@ public class LastFMService {
                 .flatMapIterable(tag -> tag);
     }
 
+    //Observable de objetos Image
     public Observable<com.sphy.lastfmapi.model.getArtist.Image> getImageUrl(String artistName) {
-        // impresión para depurar
 
+        // impresión para depurar
         System.out.println("getImage iniciado");
         System.out.println("Artista buscado: " + artistName);
 
@@ -76,7 +78,7 @@ public class LastFMService {
     }
 
 
-
+    //Observabeld de objetos Album
     public Observable<Album> getAlbumsInformation(String artistName) {
 
         // impresión para depurar
@@ -89,9 +91,5 @@ public class LastFMService {
                 .flatMapIterable(album -> album);
 
     }
-
-
-
-
 
 }

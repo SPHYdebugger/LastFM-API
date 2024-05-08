@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class LastFMApplication extends Application {
 
-//TODO hacer la exportación con CSV o añadir foto (aunque sea desde otra API)
+//Listo para SEGUNDA ENTREGA
 
     @Override
     public void init() throws Exception {

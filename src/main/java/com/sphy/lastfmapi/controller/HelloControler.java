@@ -17,6 +17,7 @@ public class HelloControler {
     @FXML
     protected void startApp() {
         try {
+            //Lanzar la escena principal con su controlador
             FXMLLoader secondLoader = new FXMLLoader(getClass().getResource("main.fxml"));
             secondLoader.setController(new MainController());
             Scene indexScene = new Scene(secondLoader.load());
