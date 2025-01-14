@@ -25,12 +25,12 @@ Basada en JavaFX, proporciona una experiencia de usuario rica y fluida.
 - **Logging-Interceptor:** Para registrar las solicitudes y respuestas HTTP en la consola durante el desarrollo.
 - **RxJava 3:** Biblioteca para manejar programación reactiva y concurrencia, optimizando el manejo de las solicitudes a la API.
 - **Jackson:** Librería para serialización/deserialización de objetos JSON.
-- **Lombok:** Para reducir la escritura de código repetitivo en clases POJO.
+- **Lombok:** Para reducir la escritura de código repetitivo en clases POO.
 
 
 
 ### Resumen pantallas APP
 ﻿<p align="center">
-<img width="100%" src="https://github.com/SPHYdebugger/LastFM-API/tree/master/src/main/resources/com/sphy/lastfmapi/images/busqueda.jpg">
+<img width="100%" src="./src/main/resources/com/sphy/lastfmapi/images/busqueda.jpg">
 <h1 align="center"> LastFM- Api Desktop Application</h1>
 </p>
