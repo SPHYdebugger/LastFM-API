@@ -1,5 +1,5 @@
 ﻿<p align="center">
-<img width="200px" src="">
+<img width="200px" src="https://github.com/SPHYdebugger/LastFM-API/tree/master/src/main/resources/com/sphy/lastfmapi/images/logo.jpg">
 <h1 align="center"> LastFM APP</h1>
 </p>
 
@@ -31,6 +31,6 @@ Basada en JavaFX, proporciona una experiencia de usuario rica y fluida.
 
 ### Resumen pantallas APP
 ﻿<p align="center">
-<img width="100%" src="">
+<img width="100%" src="https://github.com/SPHYdebugger/LastFM-API/tree/master/src/main/resources/com/sphy/lastfmapi/images/busqueda.jpg">
 <h1 align="center"> LastFM- Api Desktop Application</h1>
 </p>
