@@ -1,5 +1,5 @@
 ﻿<p align="center">
-<img width="400px" src="https://github.com/SPHYdebugger/LastFM-API/tree/master/src/main/resources/com/sphy/lastfmapi/images/logo.jpg">
+<img width="400px" src="./src/main/resources/com/sphy/lastfmapi/images/logo.jpg">
 <h1 align="center"> LastFM APP</h1>
 </p>
 
